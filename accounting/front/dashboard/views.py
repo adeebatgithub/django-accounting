@@ -19,7 +19,7 @@ class DashboardView(TemplateView):
         ).aggregate(
             total=Sum(F('credit') - F('debit'))
         )
-        return total_capital['total'] + self.get_net_profit()
+        return total_capital['total'] or 0 + self.get_net_profit()
 
     @staticmethod
     def get_recent_transactions():
