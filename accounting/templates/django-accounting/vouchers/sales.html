@@ -1,0 +1,108 @@
+{% extends 'django-accounting/includes/base.html' %}
+
+{% block title %}Voucher | Sales{% endblock %}
+
+{% block contents %}
+    <div class="max-w-lg mx-auto bg-gray-50 dark:bg-stone-800 shadow rounded-2xl p-6">
+        <h2 class="text-lg font-semibold text-gray-700 dark:text-gray-200 mb-4">
+            Create Sales Entry
+        </h2>
+
+        <form method="post" class="space-y-4">
+            {% csrf_token %}
+
+            <div class="flex justify-between gap-2">
+                <!-- Reference Number -->
+                <div class="w-full">
+                    <label class="block text-sm font-medium text-gray-600 dark:text-gray-300 mb-1">
+                        Reference Number
+                    </label>
+                    <input type="text" name="reference_number" maxlength="20"
+                           class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none
+                                border-gray-300 dark:border-stone-600 bg-white dark:bg-stone-700
+                                text-gray-800 dark:text-gray-200"
+                           placeholder="e.g. REF12345" value="{{ reference_number }}" readonly>
+                </div>
+
+                <!-- Date -->
+                <div class="w-full">
+                    <label class="block text-sm font-medium text-gray-600 dark:text-gray-300 mb-1">
+                        Date
+                    </label>
+                    <input type="date" name="date"
+                           class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none
+                                border-gray-300 dark:border-stone-600 bg-white dark:bg-stone-700
+                                text-gray-800 dark:text-gray-200"
+                           value="{{ TODAY|date:'Y-m-d' }}" required>
+                </div>
+            </div>
+
+            <div class="flex justify-between gap-2">
+                <!-- Account -->
+                <div class="w-full">
+                    <label class="block text-sm font-medium text-gray-600 dark:text-gray-300 mb-1">
+                        Account
+                    </label>
+                    <select name="account"
+                            class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none
+                    border-gray-300 dark:border-stone-600 bg-white dark:bg-stone-700
+                    text-gray-800 dark:text-gray-200" autofocus required>
+                        <option value="" disabled selected>Select Account</option>
+                        {% for acc in form.account.field.queryset %}
+                            <option value="{{ acc.id }}">{{ acc.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <!-- Particulars -->
+                <div class="w-full">
+                    <label class="block text-sm font-medium text-gray-600 dark:text-gray-300 mb-1">
+                        Particulars
+                    </label>
+                    <select name="particulars"
+                            class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none
+                    border-gray-300 dark:border-stone-600 bg-white dark:bg-stone-700
+                    text-gray-800 dark:text-gray-200" required>
+                        <option value="" disabled selected>Select Particulars</option>
+                        {% for acc in form.particulars.field.queryset %}
+                            <option value="{{ acc.id }}">{{ acc.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+
+            <!-- Amount -->
+            <div>
+                <label class="block text-sm font-medium text-gray-600 dark:text-gray-300 mb-1">
+                    Amount
+                </label>
+                <input type="number" step="0.01" name="amount"
+                       class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none
+                   border-gray-300 dark:border-stone-600 bg-white dark:bg-stone-700
+                   text-gray-800 dark:text-gray-200"
+                       placeholder="Enter amount" required>
+            </div>
+
+            <!-- Description -->
+            <div>
+                <label class="block text-sm font-medium text-gray-600 dark:text-gray-300 mb-1">
+                    Description
+                </label>
+                <textarea name="description" rows="3"
+                          class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none
+                      border-gray-300 dark:border-stone-600 bg-white dark:bg-stone-700
+                      text-gray-800 dark:text-gray-200"
+                          placeholder="Write a note..."></textarea>
+            </div>
+
+            <!-- Submit -->
+            <div>
+                <button type="submit"
+                        class="w-full mt-4 py-2 px-4 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg shadow">
+                    Save Sales Entry
+                </button>
+            </div>
+        </form>
+    </div>
+
+{% endblock %}

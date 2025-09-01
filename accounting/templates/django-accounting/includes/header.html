@@ -1,0 +1,57 @@
+<header class="bg-gray-200 dark:bg-stone-700 p-4 flex items-center justify-between border-b-2 w-full">
+    <div class="text-xl font-semibold text-gray-800 dark:text-gray-200">
+        Django Accounting | {{ page_name|safe }}
+    </div>
+
+    <div class="relative px-6" x-data="{ open: false }">
+        <!-- Button -->
+        <button @click="open = !open">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"
+                 class="w-6 h-6 fill-current text-gray-800 dark:text-gray-200">
+                <path d="M352 128C352 110.3 337.7 96 320 96C302.3 96 288 110.3 288 128L288 288L128 288C110.3 288 96 302.3 96 320C96 337.7 110.3 352 128 352L288 352L288 512C288 529.7 302.3 544 320 544C337.7 544 352 529.7 352 512L352 352L512 352C529.7 352 544 337.7 544 320C544 302.3 529.7 288 512 288L352 288L352 128z"></path>
+            </svg>
+        </button>
+
+        <!-- Dropdown -->
+        <div x-show="open" @click.away="open = false"
+             class="absolute right-0 mt-2 w-56 bg-white dark:bg-stone-800 shadow-lg rounded-lg overflow-hidden z-50">
+
+            <!-- Vouchers -->
+            <div class="px-4 py-2 text-xs uppercase text-gray-500 dark:text-gray-400 font-semibold">
+                Vouchers
+            </div>
+            <a href="{% url 'accounting:voucher-contra' %}"
+               class="block px-4 py-2 text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-stone-700">Contra</a>
+            <a href="{% url 'accounting:voucher-payment' %}"
+               class="block px-4 py-2 text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-stone-700">Payment</a>
+            <a href="{% url 'accounting:voucher-receipt' %}"
+               class="block px-4 py-2 text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-stone-700">Receipt</a>
+            <a href="{% url 'accounting:voucher-journal' %}"
+               class="block px-4 py-2 text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-stone-700">Journal</a>
+
+            <div class="border-t border-gray-300 dark:border-stone-600 my-2"></div>
+
+            <!-- Transactions -->
+            <div class="px-4 py-2 text-xs uppercase text-gray-500 dark:text-gray-400 font-semibold">
+                Transactions
+            </div>
+            <a href="{% url 'accounting:voucher-sales' %}"
+               class="block px-4 py-2 text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-stone-700">Sales</a>
+            <a href="{% url 'accounting:voucher-purchase' %}"
+               class="block px-4 py-2 text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-stone-700">Purchase</a>
+
+            <div class="border-t border-gray-300 dark:border-stone-600 my-2"></div>
+
+            <!-- Notes -->
+            <div class="px-4 py-2 text-xs uppercase text-gray-500 dark:text-gray-400 font-semibold">
+                Notes
+            </div>
+            <a href="#"
+               class="block px-4 py-2 text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-stone-700">Credit
+                Note</a>
+            <a href="#"
+               class="block px-4 py-2 text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-stone-700">Debit
+                Note</a>
+        </div>
+    </div>
+</header>

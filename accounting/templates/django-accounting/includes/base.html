@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+{% load tailwind_tags %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Brief page description">
+    <meta name="keywords" content="keyword1, keyword2">
+    <meta name="author" content="adeebdanisham">
+
+    <meta name="robots" content="index, follow">
+    <meta name="googlebot" content="index, follow">
+    <meta name="referrer" content="no-referrer">
+
+    <title>Django Accounting | {% block title %}{% endblock %}</title>
+
+    <!-- Toast for messages -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
+
+    <!-- Tailwind -->
+    {% tailwind_css %}
+
+</head>
+<body class="flex">
+{% include 'django-accounting/includes/sidebar.html' %}
+<div class="flex-row min-h-screen w-full">
+    {% include 'django-accounting/includes/header.html' %}
+    <main class="min-h-screen dark:bg-stone-600 dark:text-white">{% block contents %}{% endblock %}</main>
+</div>
+
+<!-- AlpineJs -->
+<script src="//unpkg.com/alpinejs" defer></script>
+
+<!-- Toast Js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+{% if messages %}
+    {% for message in messages %}
+        <script>
+            toastr["{{ message.tags|default:'info' }}"]("{{ message|escapejs }}");
+        </script>
+    {% endfor %}
+{% endif %}
+<script>
+    toastr.options = {
+        "closeButton": true,
+        "progressBar": true,
+        "timeOut": "5000",
+        "extendedTimeOut": "2000"
+    };
+</script>
+</body>
+</html>

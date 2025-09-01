@@ -1,0 +1,99 @@
+{% extends 'django-accounting/includes/base.html' %}
+
+{% block title %}Accounts | Create{% endblock %}
+
+{% block contents %}
+    <br>
+    <br>
+    <br>
+    <div class="max-w-lg mx-auto bg-gray-50 dark:bg-stone-800 shadow rounded-2xl p-6">
+        <h2 class="text-lg font-semibold text-gray-700 dark:text-gray-200 mb-4">
+            {{ account.name }}
+        </h2>
+
+        <form method="post" class="space-y-4">
+            {% csrf_token %}
+
+            <!-- Name -->
+            <div>
+                <label class="block text-sm font-medium text-gray-600 dark:text-gray-300 mb-1">
+                    Account Name
+                </label>
+                <input type="text" name="name" value="{{ account.name }}"
+                       class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none
+                    border-gray-300 dark:border-stone-600 bg-white dark:bg-stone-700
+                    text-gray-800 dark:text-gray-200"
+                       placeholder="e.g. Cash in Hand" required autofocus>
+            </div>
+
+            <!-- Parent Account -->
+            <div>
+                <label class="block text-sm font-medium text-gray-600 dark:text-gray-300 mb-1">
+                    Under
+                </label>
+                <select id="parentAccount" name="parent"
+                        class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none
+                     border-gray-300 dark:border-stone-600 bg-white dark:bg-stone-700
+                     text-gray-800 dark:text-gray-200">
+                    <option value="" {% if not account.parent %}selected{% endif %}>Primary</option>
+                    {% for acc in accounts %}
+                        <option value="{{ acc.id }}" {% if account.parent.id == acc.id %}selected{% endif %}>{{ acc.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <!-- Account Type -->
+            <div id="accountTypeField">
+                <label class="block text-sm font-medium text-gray-600 dark:text-gray-300 mb-1">
+                    Account Type
+                </label>
+                <select name="account_type"
+                        class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none
+                     border-gray-300 dark:border-stone-600 bg-white dark:bg-stone-700
+                     text-gray-800 dark:text-gray-200">
+                    <option value="1" {% if account.account_type == 1 %}selected{% endif %}>Asset</option>
+                    <option value="2" {% if account.account_type == 2 %}selected{% endif %}>Liability</option>
+                    <option value="3" {% if account.account_type == 3 %}selected{% endif %}>Income</option>
+                    <option value="5" {% if account.account_type == 5 %}selected{% endif %}>Expense</option>
+                </select>
+            </div>
+
+            <!-- opening balance -->
+            <div>
+                <label class="block text-sm font-medium text-gray-600 dark:text-gray-300 mb-1">
+                    Opening Balance
+                </label>
+                <input type="text" name="opening_balance"
+                       class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none
+                    border-gray-300 dark:border-stone-600 bg-white dark:bg-stone-700
+                    text-gray-800 dark:text-gray-200"
+                       placeholder="₹" value="{{ opening_balance|default:'0' }}">
+            </div>
+
+            <!-- Submit -->
+            <div>
+                <button type="submit"
+                        class="w-full mt-4 py-2 px-4 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg shadow">
+                    Save Account
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Script to toggle account type field -->
+    <script>
+        const parentSelect = document.getElementById("parentAccount");
+        const accountTypeField = document.getElementById("accountTypeField");
+
+        function toggleAccountType() {
+            if (parentSelect.value === "") {
+                accountTypeField.style.display = "block";
+            } else {
+                accountTypeField.style.display = "none";
+            }
+        }
+
+        toggleAccountType();
+        parentSelect.addEventListener("change", toggleAccountType);
+    </script>
+{% endblock %}

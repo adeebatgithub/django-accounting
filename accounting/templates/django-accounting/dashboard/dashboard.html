@@ -1,0 +1,98 @@
+{% extends 'django-accounting/includes/base.html' %}
+{% load humanize %}
+
+{% block title %}
+    Dashboard
+{% endblock %}
+
+{% block contents %}
+    <div class="p-6 space-y-8">
+        <!-- Summary Cards -->
+        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            <!-- Card -->
+            <a href="{% url 'accounting:dashboard-transactions' %}?type=asset"
+               class="rounded-2xl bg-white shadow dark:bg-stone-700 p-5 flex flex-col gap-2">
+                <span class="text-sm text-gray-500 dark:text-gray-300">Total Assets</span>
+                <span class="text-2xl font-bold text-gray-800 dark:text-white">{{ total_assets|default:"₹0"|intcomma }}</span>
+            </a>
+
+            <a href="{% url 'accounting:dashboard-transactions' %}?type=liability"
+               class="rounded-2xl bg-white shadow dark:bg-stone-700 p-5 flex flex-col gap-2">
+                <span class="text-sm text-gray-500 dark:text-gray-300">Total Liability</span>
+                <span class="text-2xl font-bold text-gray-800 dark:text-white">{{ total_liability|default:"₹0"|intcomma }}</span>
+            </a>
+
+            <a href="{% url 'accounting:dashboard-transactions' %}?type=income"
+               class="rounded-2xl bg-white shadow dark:bg-stone-700 p-5 flex flex-col gap-2">
+                <span class="text-sm text-gray-500 dark:text-gray-300">Total Income</span>
+                <span class="text-2xl font-bold text-gray-800 dark:text-white">{{ total_revenue|default:"₹0"|intcomma }}</span>
+            </a>
+
+            <a href="{% url 'accounting:dashboard-transactions' %}?type=expenses"
+               class="rounded-2xl bg-white shadow dark:bg-stone-700 p-5 flex flex-col gap-2">
+                <span class="text-sm text-gray-500 dark:text-gray-300">Total Expenses</span>
+                <span class="text-2xl font-bold text-gray-800 dark:text-white">{{ total_expenses|default:"₹0"|intcomma }}</span>
+            </a>
+
+            <div class="rounded-2xl bg-white shadow dark:bg-stone-700 p-5 flex flex-col gap-2">
+                <span class="text-sm text-gray-500 dark:text-gray-300">Net Profit</span>
+                <span class="text-2xl font-bold text-gray-800 dark:text-white">{{ net_profit|default:"₹0"|intcomma }}</span>
+            </div>
+
+            <div class="rounded-2xl bg-white shadow dark:bg-stone-700 p-5 flex flex-col gap-2">
+                <span class="text-sm text-gray-500 dark:text-gray-300">Closing Capital</span>
+                <span class="text-2xl font-bold text-gray-800 dark:text-white">{{ closing_capital|default:"₹0"|intcomma }}</span>
+            </div>
+
+            <div class="rounded-2xl bg-white shadow dark:bg-stone-700 p-5 flex flex-col gap-2">
+                <span class="text-sm text-gray-500 dark:text-gray-300">Pending Invoices</span>
+                <span class="text-2xl font-bold text-gray-800 dark:text-white">{{ pending_invoices|default:0 }}</span>
+            </div>
+        </div>
+
+        <!-- Recent Transactions Table -->
+        <div class="bg-white dark:bg-stone-700 rounded-2xl shadow">
+            <div class="p-4 border-b border-gray-200 dark:border-stone-600">
+                <h2 class="text-lg font-medium dark:text-white">Recent Transactions</h2>
+            </div>
+            <div class="overflow-x-auto">
+                <table class="min-w-full divide-y divide-gray-200 dark:divide-stone-600 text-sm">
+                    <thead class="bg-gray-50 dark:bg-stone-800 uppercase tracking-wider">
+                    <tr>
+                        <th class="px-4 py-3 text-left font-medium text-gray-600 dark:text-gray-300">Date</th>
+                        <th class="px-4 py-3 text-left font-medium text-gray-600 dark:text-gray-300">Particulars</th>
+                        <th class="px-4 py-3 text-left font-medium text-gray-600 dark:text-gray-300">Description</th>
+                        <th class="px-4 py-3 text-right font-medium text-gray-600 dark:text-gray-300">Amount</th>
+                    </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-100 dark:divide-stone-600">
+                    {% for txn in recent_transactions %}
+                        <tr class="hover:bg-gray-50 dark:hover:bg-stone-600">
+                            <td class="px-4 py-3 whitespace-nowrap text-gray-700 dark:text-gray-200">{{ txn.journal_entry.date }}</td>
+                            <td class="px-4 py-3 whitespace-nowrap text-gray-700 dark:text-gray-200">
+                                <a href="{% url 'accounting:account-details' txn.account.slug %}">
+                                    {{ txn.account.name }}
+                                </a>
+                            </td>
+                            <td class="px-4 py-3 text-gray-700 dark:text-gray-200">{{ txn.journal_entry.description }}</td>
+                            <td class="px-4 py-3 whitespace-nowrap text-right font-medium text-gray-800 dark:text-white">
+                                {% if txn.debit %}
+                                    {{ txn.debit|intcomma }}
+                                {% else %}
+                                    {{ txn.credit|intcomma }}
+                                {% endif %}
+                            </td>
+                        </tr>
+                    {% empty %}
+                        <tr>
+                            <td colspan="3" class="px-4 py-6 text-center text-gray-500 dark:text-gray-400">No recent
+                                transactions.
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}
