@@ -24,9 +24,8 @@ SECRET_KEY = 'django-insecure-17oemo5!6%^l7b&w%atx9gso#bxk-o%=-enrk+vwnsqb96frq&
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-PRODUCTION = True
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -103,9 +102,6 @@ DATABASES = {
     }
 }
 
-if PRODUCTION:
-    DATABASES["default"]["NAME"] = "prod_db.sqlite3"
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
@@ -142,7 +138,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = 'static/'
-STATIC_ROOT = BASE_DIR / 'static'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
