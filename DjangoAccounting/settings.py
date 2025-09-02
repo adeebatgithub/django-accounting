@@ -23,7 +23,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-17oemo5!6%^l7b&w%atx9gso#bxk-o%=-enrk+vwnsqb96frq&'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
+PRODUCTION = True
 
 ALLOWED_HOSTS = ["*"]
 
@@ -102,7 +103,7 @@ DATABASES = {
     }
 }
 
-if not DEBUG:
+if PRODUCTION:
     DATABASES["default"]["name"] = "prod_db.sqlite3"
 
 
