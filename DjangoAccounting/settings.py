@@ -104,7 +104,7 @@ DATABASES = {
 }
 
 if PRODUCTION:
-    DATABASES["default"]["name"] = "prod_db.sqlite3"
+    DATABASES["default"]["NAME"] = "prod_db.sqlite3"
 
 
 # Password validation
