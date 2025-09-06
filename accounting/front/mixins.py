@@ -1,7 +1,7 @@
 import requests
 from django.contrib import messages
 
-from accounting.front.settings import API_BASE_URL
+from accounting.settings import API_BASE_URL
 
 
 class ApiRequestMixin:

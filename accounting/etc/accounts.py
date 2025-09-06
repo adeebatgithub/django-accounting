@@ -80,7 +80,7 @@ LIST_OF_ACCOUNTS = [
         "parent_id": 4
     },
     {
-        "id": 15,
+        "id": 16,
         "name": "Accounts Receivable",
         "account_type": AccountModel.ASSET,
         "parent_id": 2

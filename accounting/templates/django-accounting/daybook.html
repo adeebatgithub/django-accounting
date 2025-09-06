@@ -32,8 +32,9 @@
         </div>
 
         <div class="bg-white dark:bg-stone-700 rounded-2xl shadow">
-            <div class="p-4 border-b border-gray-200 dark:border-stone-600">
+            <div class="p-4 border-b border-gray-200 dark:border-stone-600 flex justify-between items-center">
                 <h2 class="text-lg font-medium dark:text-white">Day Book</h2>
+                <h2 class="text-sm font-medium dark:text-white">As of: {{ TODAY|date:"d, M" }}</h2>
             </div>
             <div class="overflow-x-auto">
                 <table class="min-w-full divide-y divide-gray-200 dark:divide-stone-600 text-sm">
