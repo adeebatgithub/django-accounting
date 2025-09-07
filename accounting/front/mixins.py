@@ -1,7 +1,7 @@
 import requests
 from django.contrib import messages
 
-from accounting.settings import API_BASE_URL
+from django.conf import settings
 
 
 class ApiRequestMixin:
@@ -21,24 +21,24 @@ class ApiRequestMixin:
         return response.json()
 
     def api_post(self, url, data):
-        response = requests.post(API_BASE_URL + url, json=data)
+        response = requests.post(settings.API_BASE_URL + url, json=data)
         return self._process_response(response)
 
     def api_put(self, url, data):
-        response = requests.put(API_BASE_URL + url, json=data)
+        response = requests.put(settings.API_BASE_URL + url, json=data)
         return self._process_response(response)
 
     def api_patch(self, url, data):
         """Partial update (only update the provided fields)."""
-        response = requests.patch(API_BASE_URL + url, json=data)
+        response = requests.patch(settings.API_BASE_URL + url, json=data)
         return self._process_response(response)
 
     def api_get(self, url, params=None):
-        response = requests.get(API_BASE_URL + url, params=params)
+        response = requests.get(settings.API_BASE_URL + url, params=params)
         return self._process_response(response)
 
     def api_delete(self, url):
-        response = requests.delete(API_BASE_URL + url)
+        response = requests.delete(settings.API_BASE_URL + url)
         return self._process_response(response)
 
 
