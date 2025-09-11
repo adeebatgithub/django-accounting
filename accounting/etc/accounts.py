@@ -85,4 +85,10 @@ LIST_OF_ACCOUNTS = [
         "account_type": AccountModel.ASSET,
         "parent_id": 2
     },
+    {
+        "id": 17,
+        "name": "Accounts Payable",
+        "account_type": AccountModel.LIABILITY,
+        "parent_id": 5
+    },
 ]

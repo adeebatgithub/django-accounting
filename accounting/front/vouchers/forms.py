@@ -4,7 +4,7 @@ from django import forms
 
 from accounting import models
 from .base import VoucherForm
-from .utils import get_cash_bank_accounts, get_payment_accounts, get_receipt_accounts, get_purchase_accounts, get_sales_accounts
+from accounting.front.get_accounts import get_cash_bank_accounts, get_payment_accounts, get_receipt_accounts, get_purchase_accounts, get_sales_accounts
 
 
 class ContraForm(VoucherForm):

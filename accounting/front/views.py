@@ -3,7 +3,7 @@ from tkinter.font import names
 from django.views.generic import ListView
 
 from accounting import models
-from accounting.front.vouchers.utils import get_cash_bank_accounts
+from accounting.front.get_accounts import get_cash_bank_accounts
 
 class DayBookListView(ListView):
     queryset = models.JournalEntryLineModel.objects.all()

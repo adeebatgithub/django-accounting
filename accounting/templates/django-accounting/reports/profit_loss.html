@@ -44,21 +44,22 @@
         </div>
 
         <!-- Profit Table -->
-        <div class="bg-white dark:bg-stone-700 rounded-2xl shadow">
-            <div class="p-4 border-b border-gray-200 dark:border-stone-600">
+        <div class="bg-gray-200 dark:bg-stone-700 rounded-2xl shadow">
+            <div class="p-4 border-b border-gray-200 dark:border-stone-600 flex justify-between items-center">
                 <h2 class="text-lg font-medium dark:text-white">Profit&Loss</h2>
+                <h2 class="text-sm font-medium dark:text-white">As of: {{ TODAY|date:"d, M" }}</h2>
             </div>
             <div class="overflow-x-auto">
                 <table class="min-w-full divide-y divide-gray-200 dark:divide-stone-600 text-sm">
-                    <thead class="bg-gray-50 dark:bg-stone-800 uppercase tracking-wider">
+                    <thead class="bg-gray-400 dark:bg-stone-800 uppercase tracking-wider">
                     <tr>
-                        <th class="px-4 py-3 text-left font-medium text-gray-600 dark:text-gray-300"></th>
-                        <th class="px-4 py-3 text-right font-medium text-gray-600 dark:text-gray-300">Net Income</th>
-                        <th class="px-4 py-3 text-right font-medium text-gray-600 dark:text-gray-300">Net Expense</th>
+                        <th class="px-4 py-3 text-left font-medium text-gray-900 dark:text-gray-300"></th>
+                        <th class="px-4 py-3 text-right font-medium text-gray-900 dark:text-gray-300">Net Income</th>
+                        <th class="px-4 py-3 text-right font-medium text-gray-900 dark:text-gray-300">Net Expense</th>
                         {% if net_profit > 0 %}
-                            <th class="px-4 py-3 text-right font-medium text-gray-600 dark:text-gray-300">Profit</th>
+                            <th class="px-4 py-3 text-right font-medium text-gray-900 dark:text-gray-300">Profit</th>
                         {% else %}
-                            <th class="px-4 py-3 text-right font-medium text-gray-600 dark:text-gray-300">Loss</th>
+                            <th class="px-4 py-3 text-right font-medium text-gray-900 dark:text-gray-300">Loss</th>
                         {% endif %}
                     </tr>
                     </thead>
@@ -75,17 +76,18 @@
         </div>
 
         <!-- Income Table -->
-        <div class="bg-white dark:bg-stone-700 rounded-2xl shadow">
-            <div class="p-4 border-b border-gray-200 dark:border-stone-600">
+        <div class="bg-gray-200 dark:bg-stone-700 rounded-2xl shadow">
+            <div class="p-4 border-b border-gray-200 dark:border-stone-600 flex justify-between items-center">
                 <h2 class="text-lg font-medium dark:text-white">Incomes</h2>
+                <h2 class="text-sm font-medium dark:text-white">As of: {{ TODAY|date:"d, M" }}</h2>
             </div>
             <div class="overflow-x-auto">
                 <table class="min-w-full divide-y divide-gray-200 dark:divide-stone-600 text-sm">
-                    <thead class="bg-gray-50 dark:bg-stone-800 uppercase tracking-wider">
+                    <thead class="bg-gray-400 dark:bg-stone-800 uppercase tracking-wider">
                     <tr>
-                        <th class="px-4 py-3 text-left font-medium text-gray-600 dark:text-gray-300">Account</th>
-                        <th class="px-4 py-3 text-right font-medium text-gray-600 dark:text-gray-300">Debit</th>
-                        <th class="px-4 py-3 text-right font-medium text-gray-600 dark:text-gray-300">Credit</th>
+                        <th class="px-4 py-3 text-left font-medium text-gray-900 dark:text-gray-300">Account</th>
+                        <th class="px-4 py-3 text-right font-medium text-gray-900 dark:text-gray-300">Debit</th>
+                        <th class="px-4 py-3 text-right font-medium text-gray-900 dark:text-gray-300">Credit</th>
                     </tr>
                     </thead>
                     <tbody class="divide-y divide-gray-100 dark:divide-stone-600">
@@ -121,17 +123,18 @@
         </div>
 
         <!-- Expense Table -->
-        <div class="bg-white dark:bg-stone-700 rounded-2xl shadow">
-            <div class="p-4 border-b border-gray-200 dark:border-stone-600">
+        <div class="bg-gray-200 dark:bg-stone-700 rounded-2xl shadow">
+            <div class="p-4 border-b border-gray-200 dark:border-stone-600 flex justify-between items-center">
                 <h2 class="text-lg font-medium dark:text-white">Expenses</h2>
+                <h2 class="text-sm font-medium dark:text-white">As of: {{ TODAY|date:"d, M" }}</h2>
             </div>
             <div class="overflow-x-auto">
                 <table class="min-w-full divide-y divide-gray-200 dark:divide-stone-600 text-sm">
-                    <thead class="bg-gray-50 dark:bg-stone-800 uppercase tracking-wider">
+                    <thead class="bg-gray-400 dark:bg-stone-800 uppercase tracking-wider">
                     <tr>
-                        <th class="px-4 py-3 text-left font-medium text-gray-600 dark:text-gray-300">Account</th>
-                        <th class="px-4 py-3 text-right font-medium text-gray-600 dark:text-gray-300">Debit</th>
-                        <th class="px-4 py-3 text-right font-medium text-gray-600 dark:text-gray-300">Credit</th>
+                        <th class="px-4 py-3 text-left font-medium text-gray-900 dark:text-gray-300">Account</th>
+                        <th class="px-4 py-3 text-right font-medium text-gray-900 dark:text-gray-300">Debit</th>
+                        <th class="px-4 py-3 text-right font-medium text-gray-900 dark:text-gray-300">Credit</th>
                     </tr>
                     </thead>
                     <tbody class="divide-y divide-gray-100 dark:divide-stone-600">

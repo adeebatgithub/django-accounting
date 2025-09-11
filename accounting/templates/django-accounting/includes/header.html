@@ -1,4 +1,4 @@
-<header class="bg-gray-200 dark:bg-stone-700 p-4 flex items-center justify-between border-b-2 w-full">
+<header class="bg-gray-200 dark:bg-stone-700 p-4 flex items-center justify-between border-b-1 w-full">
     <div class="text-xl font-semibold text-gray-800 dark:text-gray-200">
         Django Accounting | {{ page_name|safe }}
     </div>
@@ -14,7 +14,7 @@
 
         <!-- Dropdown -->
         <div x-show="open" @click.away="open = false"
-             class="absolute right-0 mt-2 w-56 bg-white dark:bg-stone-800 shadow-lg rounded-lg overflow-hidden z-50">
+             class="absolute right-0 mt-2 w-56 bg-gray-300 dark:bg-stone-800 shadow-lg rounded-lg overflow-hidden z-50">
 
             <!-- Vouchers -->
             <div class="px-4 py-2 text-xs uppercase text-gray-500 dark:text-gray-400 font-semibold">
@@ -29,7 +29,7 @@
             <a href="{% url 'accounting:voucher-journal' %}"
                class="block px-4 py-2 text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-stone-700">Journal</a>
 
-            <div class="border-t border-gray-300 dark:border-stone-600 my-2"></div>
+               <div class="border-t border-gray-300 dark:border-stone-600 my-2"></div>
 
             <!-- Transactions -->
             <div class="px-4 py-2 text-xs uppercase text-gray-500 dark:text-gray-400 font-semibold">

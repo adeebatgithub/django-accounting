@@ -5,7 +5,6 @@ from django.db.models import Sum, Case, When, F, IntegerField
 from django.shortcuts import redirect
 from django.views import generic
 from rest_framework.reverse import reverse_lazy
-from django.utils.text import slugify
 
 from accounting import models
 from accounting.front.accounts import forms
@@ -140,7 +139,6 @@ class AccountUpdateView(ApiRequestMixin, FormInvalidMessageMixin, SuccessMessage
                 )
             )["balance"]
         })
-        print(context['form'])
         return context
 
     @staticmethod

@@ -18,12 +18,12 @@
         <div>
             <label class="sr-only" for="search">Search</label>
             <input id="search" type="search" placeholder="Search accounts…"
-                   class="w-full rounded-2xl border border-gray-300 bg-white p-3 text-sm shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:border-stone-600 dark:bg-stone-700 dark:text-white"
+                   class="w-full rounded-2xl border border-gray-300 bg-gray-300 p-3 text-sm shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:border-stone-600 dark:bg-stone-700 dark:text-white"
                    hx-get="{# url 'accounts:search' #}" hx-trigger="keyup changed delay:300ms"
                    hx-target="#accounts-table" hx-swap="innerHTML">
         </div>
 
-        <div class="bg-white dark:bg-stone-700 rounded-2xl shadow">
+        <div class="bg-gray-300 dark:bg-stone-700 rounded-2xl shadow">
             <div class="p-4 border-b border-gray-200 dark:border-stone-600">
                 <h2 class="text-lg font-medium dark:text-white">Chart of Accounts</h2>
             </div>
@@ -33,9 +33,9 @@
 
                     <!-- Asset Account Table -->
                     <table class="w-full divide-y divide-gray-200 dark:divide-stone-600 text-sm">
-                        <thead class="bg-gray-50 dark:bg-stone-800 uppercase tracking-wider">
+                        <thead class="bg-gray-400 dark:bg-stone-800 uppercase tracking-wider">
                         <tr>
-                            <th class="px-4 py-3 text-left font-medium text-gray-600 dark:text-gray-300">
+                            <th class="px-4 py-3 text-left font-medium text-gray-900 dark:text-gray-300">
                                 Asset Accounts
                             </th>
                         </tr>
@@ -59,9 +59,9 @@
 
                     <!-- Liability Account Table -->
                     <table class="w-full divide-y divide-gray-200 dark:divide-stone-600 text-sm">
-                        <thead class="bg-gray-50 dark:bg-stone-800 uppercase tracking-wider">
+                        <thead class="bg-gray-400 dark:bg-stone-800 uppercase tracking-wider">
                         <tr>
-                            <th class="px-4 py-3 text-left font-medium text-gray-600 dark:text-gray-300">Liability
+                            <th class="px-4 py-3 text-left font-medium text-gray-900 dark:text-gray-300">Liability
                                 Accounts
                             </th>
                         </tr>
@@ -85,9 +85,9 @@
 
                     <!-- Income Account Table -->
                     <table class="w-full divide-y divide-gray-200 dark:divide-stone-600 text-sm">
-                        <thead class="bg-gray-50 dark:bg-stone-800 uppercase tracking-wider">
+                        <thead class="bg-gray-400 dark:bg-stone-800 uppercase tracking-wider">
                         <tr>
-                            <th class="px-4 py-3 text-left font-medium text-gray-600 dark:text-gray-300">Income
+                            <th class="px-4 py-3 text-left font-medium text-gray-900 dark:text-gray-300">Income
                                 Accounts
                             </th>
                         </tr>
@@ -111,9 +111,9 @@
 
                     <!-- Expense Account Table -->
                     <table class="w-full divide-y divide-gray-200 dark:divide-stone-600 text-sm">
-                        <thead class="bg-gray-50 dark:bg-stone-800 uppercase tracking-wider">
+                        <thead class="bg-gray-400 dark:bg-stone-800 uppercase tracking-wider">
                         <tr>
-                            <th class="px-4 py-3 text-left font-medium text-gray-600 dark:text-gray-300">Expense
+                            <th class="px-4 py-3 text-left font-medium text-gray-900 dark:text-gray-300">Expense
                                 Accounts
                             </th>
                         </tr>

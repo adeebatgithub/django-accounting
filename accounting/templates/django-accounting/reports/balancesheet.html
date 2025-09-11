@@ -44,16 +44,16 @@
         </div>
 
         <!-- Table -->
-        <div class="bg-white dark:bg-stone-700 rounded-2xl shadow">
-            <div class="p-4 border-b border-gray-200 dark:border-stone-600">
-                <h2 class="text-lg font-medium dark:text-white">as <of></of></h2>
+        <div class="bg-gray-200 dark:bg-stone-700 rounded-2xl shadow">
+            <div class="p-4 border-b border-gray-200 dark:border-stone-600 flex justify-end items-center">
+                <h2 class="text-sm font-medium dark:text-white">As of: {{ TODAY|date:"d, M" }}</h2>
             </div>
             <div class="grid grid-cols-1 items-start md:grid-cols-2">
                 <!-- Asset Account Table -->
                 <table class="w-full divide-y divide-gray-200 dark:divide-stone-600 text-sm">
-                    <thead class="bg-gray-50 dark:bg-stone-800 uppercase tracking-wider">
+                    <thead class="bg-gray-400 dark:bg-stone-800 uppercase tracking-wider">
                     <tr>
-                        <th class="px-4 py-3 text-left font-medium text-gray-600 dark:text-gray-300">
+                        <th class="px-4 py-3 text-left font-medium text-gray-900 dark:text-gray-300">
                             Asset Accounts
                         </th>
                         <th></th>
@@ -79,9 +79,9 @@
 
                 <!-- Liability Account Table -->
                 <table class="w-full divide-y divide-gray-200 dark:divide-stone-600 text-sm">
-                    <thead class="bg-gray-50 dark:bg-stone-800 uppercase tracking-wider">
+                    <thead class="bg-gray-400 dark:bg-stone-800 uppercase tracking-wider">
                     <tr>
-                        <th class="px-4 py-3 text-left font-medium text-gray-600 dark:text-gray-300">Liability
+                        <th class="px-4 py-3 text-left font-medium text-gray-900 dark:text-gray-300">Liability
                             Accounts
                         </th>
                         <th></th>

@@ -46,6 +46,9 @@ class AccountModel(MPTTModel, TimeStampedModel):
             )
         )['total'] or 0
 
+    def get_recent_transactions(self):
+        return JournalEntryLineModel.objects.filter(account_id=self.id)[10:]
+
     def save(self, *args, **kwargs):
         if not self.slug:
             super().save(*args, **kwargs)

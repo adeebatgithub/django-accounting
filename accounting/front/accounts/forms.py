@@ -1,7 +1,7 @@
 from django import forms
-from mptt.forms import TreeNodeChoiceField
 
 from accounting.models import AccountModel
+
 
 class AccountUpsertForm(forms.ModelForm):
     opening_balance = forms.DecimalField(max_digits=10, decimal_places=2, required=False)
@@ -36,4 +36,3 @@ class AccountUpsertForm(forms.ModelForm):
         if account_type and parent:
             raise forms.ValidationError("Account with parent is allowed to change the account type.")
         return account_type
-

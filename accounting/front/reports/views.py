@@ -3,7 +3,7 @@ from django.db.models.functions import Coalesce
 from django.views.generic import TemplateView, ListView
 
 from accounting import models
-from accounting.front.utils import get_total
+from accounting.front.utils import get_total_by_type
 
 
 class ProfitLossListView(TemplateView):
@@ -15,13 +15,13 @@ class ProfitLossListView(TemplateView):
                 total_credit=Coalesce(Sum("journalentrylinemodel__credit"), Value(0), output_field=DecimalField()),
                 total_debit=Coalesce(Sum("journalentrylinemodel__debit"), Value(0), output_field=DecimalField()),
             ),
-            "net_income": get_total(models.AccountModel.INCOME),
+            "net_income": get_total_by_type(models.AccountModel.INCOME),
             "expense_accounts": models.AccountModel.objects.filter(account_type=models.AccountModel.EXPENSE).annotate(
                 total_credit=Coalesce(Sum("journalentrylinemodel__credit"), Value(0), output_field=DecimalField()),
                 total_debit=Coalesce(Sum("journalentrylinemodel__debit"), Value(0), output_field=DecimalField()),
             ),
-            "net_expense": get_total(models.AccountModel.EXPENSE),
-            "net_profit": get_total(models.AccountModel.INCOME) - get_total(models.AccountModel.EXPENSE),
+            "net_expense": get_total_by_type(models.AccountModel.EXPENSE),
+            "net_profit": get_total_by_type(models.AccountModel.INCOME) - get_total_by_type(models.AccountModel.EXPENSE),
         }
 
 
@@ -32,8 +32,8 @@ class BalanceSheet(TemplateView):
         return {
             "asset_accounts": models.AccountModel.objects.filter(account_type=models.AccountModel.ASSET),
             "liability_accounts": models.AccountModel.objects.filter(account_type=models.AccountModel.LIABILITY),
-            "total_asset": get_total(models.AccountModel.ASSET),
-            "total_liability": get_total(models.AccountModel.LIABILITY),
+            "total_asset": get_total_by_type(models.AccountModel.ASSET),
+            "total_liability": get_total_by_type(models.AccountModel.LIABILITY),
         }
 
 

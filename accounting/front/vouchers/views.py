@@ -5,7 +5,7 @@ from rest_framework.reverse import reverse_lazy
 from accounting.front.mixins import ApiRequestMixin, FormInvalidMessageMixin
 from accounting.front.vouchers.forms import ContraForm, PaymentForm, ReceiptForm, JournalForm, PurchaseForm, SalesForm
 from .base import VoucherBaseView
-from ..utils import get_reference_number
+from accounting.front.utils import get_reference_number
 from ... import models
 
 
